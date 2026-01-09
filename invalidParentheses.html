@@ -1,0 +1,32 @@
+<h1>Invalid Parentheses</h1>
+<p>check the console for the output</p>
+
+<script>
+    function isValidParentheses(s) {
+        let stack = [];
+        let mapping = {'(': ')', '{': '}', '[': ']'};
+
+        for (let char of s) {
+            // If it's an opening bracket, push it onto the stack
+            if (mapping[char]) {
+                stack.push(char);
+            } else {
+                // It's a closing bracket: check if top of stack matches
+                let topElement = stack.pop();
+                if (!topElement || mapping[topElement] !== char) {
+                    return false;
+                }
+            }
+        }
+
+        return stack.length === 0;
+    }
+    console.log('Input: "()"');
+    console.log('output:', isValidParentheses("()")); // true
+
+    console.log('Input: "()[]{}"');
+    console.log('output:', isValidParentheses("()[]{}")); // true
+
+    console.log('Input: ")("');
+    console.log('output:', isValidParentheses(")(")); // false
+</script>
