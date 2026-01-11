@@ -1,0 +1,32 @@
+<h2>Roman to Integer</h2>
+<script>
+// Function to convert Roman numeral to Integer
+function romantoInteger(s) {
+    var romanmap = {
+        'I': 1,
+        'V': 5,
+        'X':10,
+        'L':50,
+        'C':100,
+        'D':500,
+        'M':1000
+    };
+
+    let total = 0;
+
+    for(let i=0;i<s.length;i++){
+        let currentval = romanmap[s[i]]
+        let nextVal = romanmap[s[i+1]]
+        if(nextVal && currentval < nextVal){
+            total-=currentval;
+        }else{
+            total+=currentval;
+        }
+    }
+    return total;
+}
+
+console.log(`Input: 'MCMXCIV' -> Output: ${romantoInteger('MCMXCIV')}`);
+console.log(`Input: 'III' -> Output: ${romantoInteger('III')}`);
+
+</script>
