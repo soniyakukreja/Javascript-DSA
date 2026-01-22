@@ -1,0 +1,29 @@
+<h1>Reverse string</h1>
+<script>
+    // function reverseString(string){
+    //     let stringArray = string.split("");
+    //     if(stringArray.length>1){
+    //         let reversed='';
+    //         for(i=stringArray.length;i>0;i--){
+    //             reversed +=stringArray[i-1]
+    //         }
+    //         return reversed;
+    //     }else{
+    //         return string;
+    //     }
+    // }
+    //===no need to convert string to array via split we can assume characters as array elements.
+
+    function reverseString(str) {
+    let reversed = '';
+    for (let i = str.length - 1; i >= 0; i--) {
+        reversed += str[i];
+    }
+    return reversed;
+}
+
+    console.log(reverseString('hello'));
+    console.log(reverseString('a'));
+    console.log(reverseString(''));
+    console.log(reverseString('soniya kukreja'));
+</script>

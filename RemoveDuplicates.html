@@ -1,0 +1,17 @@
+<script>
+ //Remove Duplicates from Sorted Array
+function removeDuplicate(nums){
+    if(nums.length===0) return 0;
+    let k = 1;
+    for(let a=1;a<nums.length;a++){
+        if(nums[a]!==nums[k-1]){
+            nums[k] = nums[a];
+            k++;
+        }
+    }
+    return k;
+}
+
+console.log('input:[0,0,1,1,1,2,2,3,3,4]',removeDuplicate([0,0,1,1,1,2,2,3,3,4]));
+console.log('input:[1,1,2]',removeDuplicate([1,1,2]));
+</script>
