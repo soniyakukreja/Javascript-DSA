@@ -15,15 +15,32 @@
     //===no need to convert string to array via split we can assume characters as array elements.
 
     function reverseString(str) {
-    let reversed = '';
-    for (let i = str.length - 1; i >= 0; i--) {
-        reversed += str[i];
+        let reversed = '';
+        for (let i = str.length - 1; i >= 0; i--) {
+            reversed += str[i];
+        }
+        return reversed;
     }
-    return reversed;
-}
 
-    console.log(reverseString('hello'));
-    console.log(reverseString('a'));
-    console.log(reverseString(''));
-    console.log(reverseString('soniya kukreja'));
+    function reverseEachWord(str){
+        let reversed="";
+        str.split(" ").forEach((v,i)=>{
+            for(let k = v.length-1;k>=0;k--){
+                reversed += v[k];
+            }
+            reversed += " ";
+        })
+
+        return reversed.trim();
+    }
+
+    // console.log(reverseString('hello'));
+    // console.log(reverseString('a'));
+    // console.log(reverseString(''));
+    // console.log(reverseString('soniya kukreja'));
+
+    console.log(reverseEachWord('soniya kukreja'));
+    console.log(reverseEachWord('hello world I love this world'));
+    console.log(reverseEachWord('a'));
+    console.log(reverseEachWord(''));
 </script>

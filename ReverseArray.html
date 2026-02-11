@@ -1,0 +1,21 @@
+<h1>Reverse Array using two pointers</h1>
+
+<script>
+    function reverseArray(array){
+        let i=0;
+        let newArray = [];
+        let j= array.length-i;
+        while(i<array.length){
+            j--;
+            newArray[i] = array[j];
+            i++;
+        }
+        return newArray;
+    }
+
+    console.log(reverseArray([1,2,3,4,5]));
+    console.log(reverseArray(['a','b','c','d','e','f','g']));
+    console.log(reverseArray(['hello','world']));
+    console.log(reverseArray(['hello']));
+    console.log(reverseArray([]));
+</script>

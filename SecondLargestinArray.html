@@ -1,0 +1,63 @@
+<h1>Second Largest array</h1>
+<script>
+    function secondLargest1(arr){
+        let k=0;
+        while(k<arr.length){
+            for(i=0,j=1;i<arr.length-1;i++,j++){
+                if(arr[i]<arr[j]){
+                    let temp = arr[i];
+                    arr[i]=arr[j];
+                    arr[j]=temp;
+                }
+            }
+            k++;
+        }
+        return arr[1];
+    }
+
+    function secondLargest2(arr){
+        let largest = arr[0];
+        let second_largest=   arr[0]>arr[1]?arr[1]:arr[0];
+        for(j=1;j<arr.length;j++){
+            if(largest<arr[j]){
+                largest = arr[j];
+            }
+        }
+        for(j=0;j<arr.length;j++){
+            if(largest!==arr[j] && second_largest<arr[j]){
+                second_largest = arr[j];
+            }
+        }
+        return {largest,second_largest};
+    }
+
+    function secondLargest(arr) {
+    if (arr.length < 2) return null;
+
+    let largest = -Infinity;
+    let second = -Infinity;
+    console.log('largest',largest,second)
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > largest) {
+            largest = arr[i];
+        }
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== largest && arr[i] > second) {
+            second = arr[i];
+        }
+    }
+
+    return second === -Infinity ? null : second;
+}
+
+
+    // console.log(secondLargest([100,500,200,8000]))
+    // console.log(secondLargest([1,50,520,18,19,30]))
+    // console.log(secondLargest([10,5,20,8]))
+    // console.log(secondLargest([5]))
+    console.log(secondLargest([10,10,20,30,50,7,70]))
+    // console.log(secondLargest([5,5,5]))
+</script>
