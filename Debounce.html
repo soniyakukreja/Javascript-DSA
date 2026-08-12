@@ -1,0 +1,26 @@
+
+<h1>Debounce Test</h1>
+<p>
+    Write a simple debounce function in plain JavaScript that takes a function fn and a delay. It should ensure fn only runs after the user has stopped typing for the duration of delay.
+</p>
+<input type="text" id="debounceInput" placeholder="Type here..." style="padding:8px; width:250px; font-size:1rem; margin-top:1rem;">
+<script>
+    function test(delay){
+        console.log("run test function after delay of ..."+delay)
+    }
+
+    // Debounce function
+    function debounce(fn, delay) {
+        let timer;
+        return function(...args) {
+            clearTimeout(timer);
+            timer = setTimeout(() => fn.apply(this, args), delay);
+        };
+    }
+
+    // Event listener on keyup
+    const input = document.getElementById('debounceInput');
+    input.addEventListener('keyup', debounce(function(e) {
+        console.log('Input value:', e.target.value);
+    }, 500));
+</script>

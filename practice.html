@@ -1,0 +1,18 @@
+<h1>Practice Page</h1>
+<p>check the console</p>
+
+<button onclick="hello()">click me normal function</button>
+<button onclick="(()=>{console.log('this arrow',this)})()">click me Arrow function</button>
+<button onclick="(function(){console.log('this normal',this)})()">click me normal direct function</button>
+<script>
+
+// hello();
+function hello() {
+    console.log("Hi", this);
+}
+
+const Hello =()=>{
+    console.log("arrow Hello",this)
+}
+
+</script>

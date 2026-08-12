@@ -1,0 +1,70 @@
+<h1>Arrow Function</h1>
+    Limitations
+    <ul>
+      <li>
+1. no own this (this displays value from lexical environment)
+</li><li>
+2. not constructor
+</li><li>
+3. no own arguments object 
+</li><li>
+4. no prototype
+</li><li>
+5. no yeild and generator function
+</li><li>
+6. Not Ideal for Event Handlers (sometimes if you need this in the function)
+</li><li>
+7. Cannot Be Hoisted Like Function Declarations
+</li><li>
+
+When Should You Use Arrow Functions?
+</li><li>
+
+✅ Short callback functions
+</li><li>
+✅ Array methods (map, filter, reduce)
+</li><li>
+✅ When you want lexical this (React, closures)
+
+</li>
+    </ul>
+<script>
+
+  
+
+const transactions = [
+  { id: 1, category: 'Food', amount: 50 },
+  { id: 2, category: 'Tech', amount: 1200 },
+  { id: 3, category: 'Food', amount: 30 },
+];
+  // Fixed reduce function for grouping amounts by category
+  const grouped = transactions.reduce((acc, curr) => {
+    acc[curr.category] = (acc[curr.category] || 0) + curr.amount;
+    return acc;
+  }, {});
+  console.log(grouped);
+
+
+const test1 = () => {
+  console.log(arguments);
+};
+
+const test2 = (...args) => {
+  console.log(args);
+};
+
+const test = function(){
+  console.log(arguments);
+};
+
+test2(1, 2, 3); // ❌ ReferenceError
+
+//7. Cannot Be Hoisted Like Function Declarations
+
+sayHello(); // ✅ Works
+
+function sayHello() {
+  console.log("Hello");
+}
+
+</script>

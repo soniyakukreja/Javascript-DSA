@@ -1,0 +1,149 @@
+another way is IIFE =Immediately Invoked Function Expression
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure in JavaScript</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f9f9f9;
+            color: #222;
+            margin: 0;
+            padding: 2rem;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+        p, .explanation {
+            margin: 1rem 0;
+            line-height: 1.6;
+        }
+        .code-block {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .method-title {
+            font-weight: bold;
+            color: #2980b9;
+            margin-top: 1.5rem;
+        }
+        .note {
+            background: #eaf6ff;
+            border-left: 4px solid #2980b9;
+            padding: 0.75rem 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Closure in JavaScript</h1>
+    <div class="explanation">
+        <b>Problem:</b> Why does the following code print the number <b>6</b> five times after a second, instead of 1 to 5?
+    </div>
+    <div class="code-block">
+function test(){
+    for(var i=1;i<=5;i++){       
+        setTimeout(()=>{
+            console.log(i)
+        },1000)
+    }
+}
+test();
+    </div>
+    <div class="note">
+        <b>Explanation:</b> <br>
+        <span>Because <b>var</b> is function-scoped, all timeouts share the same <b>i</b> variable, which ends up as 6 after the loop finishes.</span>
+    </div>
+    <div class="method-title">How to fix it without changing <b>var</b> to <b>let</b>?</div>
+    <ol>
+        <li>
+            <b>Passing <code>i</code> as an argument to <code>setTimeout</code>:</b>
+            <div class="code-block">
+function test1(){
+    for(var i=1;i<=5;i++){       
+        setTimeout((x)=>{
+            console.log(x)
+        },1000,i)
+    }
+}
+test1();
+            </div>
+        </li>
+        <li>
+            <b>Using IIFE (Immediately Invoked Function Expression):</b>
+            <div class="code-block">
+function test2(){
+    for(var i=1;i<=5;i++){ 
+        (function(i){      
+            setTimeout(function(){
+                console.log(i)
+            },1000);
+        })(i);
+    }
+}
+test2();
+            </div>
+        </li>
+        <li>
+            <b>Change <code>var</code> to <code>let</code>:</b>
+            <div class="code-block">
+for (let i = 1; i <= 5; i++) {
+    setTimeout(() => console.log(i), 1000);
+}
+            </div>
+        </li>
+    </ol>
+    <div class="note">
+        <b>Why does <code>let</code> work?</b><br>
+        <ul>
+            <li><b>let</b> is block-scoped.</li>
+            <li>Each iteration gets its own <b>i</b>.</li>
+        </ul>
+    </div>
+
+    <!-- All runnable code in script tag for console output -->
+    <script>
+    // Example 1: Using var (prints 6 five times)
+    for(var i=1;i<=5;i++){       
+        setTimeout(()=>{
+            console.log('test:', i)
+        },1000)
+    }
+
+
+    // Example 2: Passing i as argument to setTimeout
+    for(var i=1;i<=5;i++){       
+        setTimeout((x)=>{
+            console.log('test1:', x)
+        },1000,i)
+    }
+
+
+    // Example 3: Using IIFE
+    for(var i=1;i<=5;i++){ 
+        (function(i){      
+            setTimeout(function(){
+                console.log('test2:', i)
+            },1000);
+        })(i);
+    }
+
+
+    // Example 4: Using let
+    for (let i = 1; i <= 5; i++) {
+        setTimeout(() => console.log('let:', i), 1000);
+    }
+    </script>
+</body>
+</html>

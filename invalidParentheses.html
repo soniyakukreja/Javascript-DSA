@@ -2,21 +2,30 @@
 <p>check the console</p>
 
 <script>
+
     function isValidParentheses(s) {
         let stack = [];
         let mapping = {'(': ')', '{': '}', '[': ']'};
 
-        for (let char of s) {
+        // console.log(s.length)
+        let string  = s.replace(/\s/g, '').replace(/[^(){}[]]/g, '');
+        // console.log(string.length,string)
+
+        for (let char of string) {
+        // console.log('char',char);
             // If it's an opening bracket, push it onto the stack
             if (mapping[char]) {
                 stack.push(char);
             } else {
                 // It's a closing bracket: check if top of stack matches
                 let topElement = stack.pop();
+                // console.log("stack topElement",stack,topElement,char);
                 if (!topElement || mapping[topElement] !== char) {
                     return false;
                 }
             }
+                    // console.log('stack',stack);
+
         }
 
         return stack.length === 0;
@@ -29,4 +38,8 @@
 
     console.log('Input: ")("');
     console.log('output:', isValidParentheses(")(")); // false
+
+    console.log('Input: " ( ( ) ) "');
+    console.log('output:', isValidParentheses(" ( ( ) ) ")); // false
+
 </script>

@@ -1,0 +1,16 @@
+<input id="debouceinput" />
+<script>
+function debounce(fn,delay){
+    let timer;
+    return function(...args){
+        clearTimeout(timer);
+        timer = setTimeout(()=>fn.apply(this,args),delay);
+    };
+}
+
+const input = document.getElementById("debouceinput");
+input.addEventListener("keyup",debounce(function(e){
+    console.log(e.target.value);
+},500))
+
+</script>

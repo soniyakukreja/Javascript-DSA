@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0">
+    <title>Accumulator Function Example</title>
+</head>
+<body>
+    <h1>Accumulator Function</h1>
+    <p>An <strong>accumulator function</strong> is a function that maintains a running total or result as it processes a sequence of values. It is commonly used in array methods like <code>reduce</code> in JavaScript.</p>
+    <h2>Simple Example</h2>
+    <pre><code>// Accumulator function to sum numbers in an array
+function sumArray(arr) {
+    return arr.reduce(function(acc, curr) {
+        return acc + curr;
+    }, 0);
+}
+
+const numbers = [1, 2, 3, 4, 5];
+console.log(sumArray(numbers)); // Output: 15
+</code></pre>
+    <p><strong>Explanation:</strong> <br>
+        - <code>acc</code> is the accumulator that keeps the running total.<br>
+        - <code>curr</code> is the current value in the array.<br>
+        - The function adds each value to the accumulator, starting from 0.<br>
+        - The final result is the sum of all numbers in the array.
+    </p>
+    <h2>When to use?</h2>
+    <ul>
+        <li>When you need to combine all elements of an array into a single value (sum, product, etc.).</li>
+        <li>When you want to process a sequence and keep a running result.</li>
+    </ul>
+</body>
+</html>

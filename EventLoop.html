@@ -1,0 +1,5 @@
+<h1>Event Loop</h1>
+If I have a console.log, a setTimeout(..., 0), and a Promise.resolve().then(), in what order do they execute and why?
+ (Testing your knowledge of Microtasks vs. Macrotasks).
+ <b>Answer:</b>
+console.log (Sync) -> Promise (Microtask) -> setTimeout (Macrotask).

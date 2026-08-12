@@ -1,0 +1,98 @@
+<h2>Class vs Constructor shared methods  prototype</h2>
+
+<script>
+
+    //=========example 1
+    /*
+class Users{
+    
+    constructor(user){
+        this.name = user.name;
+        this.role = user.role;
+        this.login = function(){
+            console.log('login function unique for every user');
+        }
+    }
+
+    getRole(){
+        
+        console.log('this is shared method');
+        return this.role;
+    }
+
+
+}
+
+
+const user1 = new Users({name:"soniya",'role':'admin'})
+const user2 = new Users({name:'himanshu','role':'doctor'})
+
+console.log(user1.getRole === user2.getRole);
+console.log(user1.login === user2.login);
+
+*/
+//===example 2
+
+/*
+class User{
+   
+    constructor(name){
+        this.name = name;
+        
+        
+    }
+
+    login(){
+        console.log('shared ===login function ');
+    }
+}
+
+class Admin extends User{
+    constructor(name,permissions){
+        super(name);
+        this.permissions = permissions;
+    }
+
+    deleteUser(){
+            console.log("shared delete user ")
+    }
+}
+
+User.prototype.getInfo = function(){
+    console.log('getinfo added via prototype')
+}
+
+const admin1 = new Admin("soniya",["delete"])
+
+console.log(admin1.__proto__,admin1.__proto__.__proto__,Admin.prototype,User.prototype)
+console.log(admin1.__proto__ === Admin.prototype);
+console.log(admin1.__proto__.__proto__ === User.prototype);
+
+console.log(admin1.login === Admin.prototype.login);       // true ✅
+console.log(admin1.deleteUser === Admin.prototype.deleteUser); // true ✅
+
+// also test getInfo
+admin1.getInfo(); // works ✅
+
+*/
+
+//==example 3
+
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+
+  login() {
+    console.log(this.name + " logged in");
+  }
+}
+
+const user1 = new User("Soniya");
+
+// extracting method
+const loginFn = user1.login;
+
+loginFn(); 
+
+</script>

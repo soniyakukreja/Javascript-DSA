@@ -1,0 +1,25 @@
+<h1>Equity and Coercion</h1>
+<p>
+    [] (empty array) is truthy
+
+![] → false
+So now the expression becomes:
+
+[] === false
+
+=== is strict equality
+
+Strict equality:
+
+❌ does NOT convert types
+
+❌ does NOT coerce values
+
+✅ checks type + value
+
+</p>
+<script>
+    console.log(([]===![]))
+    console.log(([]==![]))
+
+</script>

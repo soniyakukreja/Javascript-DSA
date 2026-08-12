@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reduce Function Example</title>
+</head>
+<body>
+    <h1>Reduce Function in JavaScript</h1>
+    <p>The <strong>reduce</strong> function is a powerful array method in JavaScript that processes each element of an array and reduces it to a single value. It takes a callback function (the reducer) and an optional initial value.</p>
+    <h2>Simple Example</h2>
+    <pre><code>// Using reduce to sum numbers in an array
+const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce(function(acc, curr) {
+    return acc + curr;
+}, 0);
+console.log(sum); // Output: 15
+</code></pre>
+    <p><strong>Explanation:</strong><br>
+        - <code>acc</code> is the accumulator (the running total).<br>
+        - <code>curr</code> is the current value in the array.<br>
+        - The function adds each value to the accumulator, starting from 0.<br>
+        - The final result is the sum of all numbers in the array.
+    </p>
+    <h2>Other Use Cases for reduce()</h2>
+    <ul>
+        <li><strong>Finding the maximum or minimum value:</strong> <br>
+            <pre><code>const max = numbers.reduce((acc, curr) => acc > curr ? acc : curr, numbers[0]);</code></pre>
+        </li>
+        <li><strong>Flattening an array:</strong> <br>
+            <pre><code>const nested = [[1,2], [3,4], [5]];
+const flat = nested.reduce((acc, curr) => acc.concat(curr), []);</code></pre>
+        </li>
+        <li><strong>Counting occurrences:</strong> <br>
+            <pre><code>const fruits = ['apple', 'banana', 'apple'];
+const count = fruits.reduce((acc, curr) => {
+    acc[curr] = (acc[curr] || 0) + 1;
+    return acc;
+}, {});</code></pre>
+        </li>
+    </ul>
+    <h2>When to use reduce?</h2>
+    <ul>
+        <li>When you want to combine all elements of an array into a single value (sum, product, etc.).</li>
+        <li>When you need to transform an array into an object or another array.</li>
+        <li>When you want to process a sequence and keep a running result.</li>
+        <li>When you want to perform complex calculations or aggregations on array data.</li>
+    </ul>
+    More Examples :
+    input :
+    const transactions = [
+        { id: 1, category: 'Food', amount: 50 },
+        { id: 2, category: 'Tech', amount: 1200 },
+        { id: 3, category: 'Food', amount: 30 },
+    ];
+
+    expected output { Food: 80, Tech: 1200 }.
+
+    const result = transactions.reduce((acc, { category, amount }) => ({
+    ...acc,
+    [category]: (acc[category] || 0) + amount
+    }), {});
+</body>
+</html>

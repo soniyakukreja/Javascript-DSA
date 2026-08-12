@@ -1,0 +1,44 @@
+<script>
+    const nested = [[1,2], [3,4], [5,[8,9,[7,6,[0]]]]];
+const flat = nested.reduce((acc, curr) =>  acc.concat(curr), []);
+// console.log(flat);
+
+function flaten (nested){
+    return nested.reduce((acc, curr) => {
+        return acc.concat(Array.isArray(curr)?flaten(curr):curr);
+    }, []);
+
+
+}
+console.log(flaten(nested));
+
+
+function flattenArray(arr) {
+    return arr.reduce((accumulator, currentValue) => {
+        return accumulator.concat(
+            Array.isArray(currentValue) ? flattenArray(currentValue) : currentValue
+        );
+    }, []);
+}
+
+// Example usage:
+const nestedArray = [1, [2, [3, [4]], 5], 6];
+const flattenedArray = flattenArray(nestedArray);
+
+console.log(flattenedArray); // Output: [1, 2, 3, 4, 5, 6]
+
+
+//  function flattenArray(nested){
+//     let output = nested.reduce(function(acc,curr){
+//         acc.concat(curr)
+//             // acc = [...acc,...curr];
+//             return acc;
+//     },[])
+//     return output;
+//     console.log('output',output);
+
+//  }
+
+//  console.log(flattenArray(nested));
+
+ </script>
